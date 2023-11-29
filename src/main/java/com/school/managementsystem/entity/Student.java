@@ -52,11 +52,6 @@ public class Student {
     @Column(name= "date_of_joining")
     private LocalDate dateOfJoining;
 
-    @Column(name= "image")
-    private byte[] imageData;
-
-    @Column(name= "image_name")
-    private String imageName;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name= "student_id")
@@ -216,21 +211,6 @@ public class Student {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public byte[] getImageData() {
-        return imageData;
-    }
-
-    public void setImageData(byte[] imageData) {
-        this.imageData = imageData;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
 
     public List<StudentPayment> getPayments() {
         return payments;
@@ -264,7 +244,6 @@ public class Student {
                 ", aadharNo='" + aadharNo + '\'' +
                 ", status=" + status +
                 ", dateOfJoining=" + dateOfJoining +
-                ", imageName='" + imageName + '\'' +
                 ", payments=" + payments +
                 '}';
     }
