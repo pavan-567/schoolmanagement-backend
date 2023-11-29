@@ -142,8 +142,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public Student insertStudentSimpl(StudentFee studentFee, MultipartFile file) {
-        return studentDAO.insertStudentPaymentSimpl(studentFee, file);
+    public Student insertStudentSimpl(StudentFee studentFee) {
+        return studentDAO.insertStudentPaymentSimpl(studentFee);
     }
 
     @Override

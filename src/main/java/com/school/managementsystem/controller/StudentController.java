@@ -48,25 +48,10 @@ public class StudentController {
         return studentService.insertStudent(student);
     }
 
-    // Not Using This One
-    @PostMapping("/student")
-    private Student insertStudent(@RequestPart("data") Map<String, Object> json, @RequestPart("file") MultipartFile file) {
-        HashMap<String, Object> stuObj = (HashMap) json.get("stuDetails");
-        HashMap<String, Object> feeObj = (HashMap) json.get("feeDetails");
-        System.out.println(json);
-
-        HashMap<String, String> stuDetails = (HashMap<String, String>) stuObj.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().toString()));
-
-        HashMap<String, String> feeDetails = (HashMap<String, String>) feeObj.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().toString()));
-
-        return studentService.insertStudentWithFee(stuDetails, feeDetails, file);
-    }
 
     // Using This One To Create The Students
     @PostMapping("/student-simple")
-    private Student insertStudentSimple(@RequestPart("fee") StudentFee stuFee, @RequestPart("file") MultipartFile file) {
+    private Student insertStudentSimple(@RequestBody StudentFee stuFee) {
         return studentService.insertStudentSimpl(stuFee, file);
     }
 

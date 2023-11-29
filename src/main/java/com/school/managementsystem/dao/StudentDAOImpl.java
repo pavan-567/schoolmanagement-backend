@@ -47,14 +47,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student insertStudentPaymentSimpl(StudentFee stuFee, MultipartFile file) {
-        System.out.println("Stu Fee : " + stuFee);
-        stuFee.getStudent().setImageName(file.getOriginalFilename());
-        try {
-            stuFee.getStudent().setImageData(file.getBytes());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Student insertStudentPaymentSimpl(StudentFee stuFee) {
         entityManager.merge(stuFee);
         return stuFee.getStudent();
     }
