@@ -17,15 +17,13 @@ public interface StudentDAO {
 
     Student insertStudentPayment(Student student, StudentPayment studentPayment);
 
-    Student insertStudentPaymentSimpl(StudentFee stuFee, MultipartFile file);
+    Student insertStudentPaymentSimpl(StudentFee stuFee);
 
     List<Student> getStudentsByYearStandard(int year, String standard);
 
     StudentFee getStudentWithFeeById(int id);
 
     String deleteStudentById(int id);
-
-    Student insertStudentWithFee(Student stu, StudentFee stuFee, MultipartFile file);
 
     Master insertMasterDetails(Master master);
 

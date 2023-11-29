@@ -90,21 +90,6 @@ public class StudentDAOImpl implements StudentDAO {
         return "Successfully Deleted!";
     }
 
-    @Override
-    public Student insertStudentWithFee(Student stu, StudentFee stuFee, MultipartFile file) {
-        stu.setStatus(1);
-        if(file != null) {
-            try {
-                stu.setImageData(file.getBytes());
-                stu.setImageName(file.getOriginalFilename());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        stuFee.setStudent(stu);
-        entityManager.merge(stuFee);
-        return stu;
-    }
 
     @Override
     public Master insertMasterDetails(Master master) {

@@ -36,23 +36,12 @@ public class StudentController {
         return Collections.singletonMap("message", "success");
     }
 
-    // JUST FOR TESTING PURPOSE
-    @PostMapping("/students-postman")
-    private Student insertStu(@RequestPart("data") Student student, @RequestPart("file")MultipartFile file) {
-        student.setId(0);
-        try {
-            student.setImageData(file.getBytes());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return studentService.insertStudent(student);
-    }
 
 
     // Using This One To Create The Students
     @PostMapping("/student-simple")
     private Student insertStudentSimple(@RequestBody StudentFee stuFee) {
-        return studentService.insertStudentSimpl(stuFee, file);
+        return studentService.insertStudentSimpl(stuFee);
     }
 
     @GetMapping("/students")
@@ -70,12 +59,6 @@ public class StudentController {
         return studentService.getStudentsByYearStandard(year, standard);
     }
 
-
-    // This Method Doesn't Need To Be Frank [Not Used]
-    @GetMapping("/student-fee/{id}")
-    private Stu_Stufee getFullStudentWithFee(@PathVariable int id) {
-        return studentService.getStudentWithFee(id);
-    }
 
     @DeleteMapping("/student-delete/{id}")
     private String deleteStudentById(@PathVariable int id) {
